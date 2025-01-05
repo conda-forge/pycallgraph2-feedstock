@@ -6,11 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pycallgraph2-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pycallgraph2-{{ version }}.tar.gz
   sha256: f5d02c1ea446cd7051ad886fc61c6698c1d1f6b759ac5e32ddec5fab153b73c8
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: "{{ PYTHON }} -m pip install . -vv"
 
@@ -18,9 +18,9 @@ requirements:
   host:
     - pip
     - pytest
-    - python >=3.3
+    - python {{ python_min }}
   run:
-    - python >=3.3
+    - python >={{ python_min }}
 
 test:
   imports:
@@ -30,6 +30,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/daneads/pycallgraph2
