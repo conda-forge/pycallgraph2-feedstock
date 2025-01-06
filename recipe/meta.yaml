@@ -19,7 +19,8 @@ requirements:
     - pip
     - pytest
     - python {{ python_min }}
-    - setuptools
+    # To address "error in pycallgraph2 setup command: use_2to3 is invalid"
+    - setuptools <58
   run:
     - python >={{ python_min }}
 
